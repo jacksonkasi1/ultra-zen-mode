@@ -1,71 +1,108 @@
-# ultra-zen-mode README
+# Ultra Zen Mode
 
-This is the README for your extension "ultra-zen-mode". After writing up a brief description, we recommend including the following sections.
+A custom Ultra Zen Mode for maximizing the code view in Visual Studio Code. This extension provides a distraction-free coding environment by toggling various UI elements.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Toggle Ultra Zen Mode with a single keybinding
+- Hides tabs, status bar, activity bar, and other UI elements
+- Enables full-screen mode and maximizes the code view
+- Customizable settings to fit your preferences
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking the Extensions icon in the Activity Bar or by pressing `Ctrl+Shift+X`.
+3. Search for "Ultra Zen Mode".
+4. Click "Install" to install the extension.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Alternatively, you can install the extension from the VSCode marketplace.
 
-## Requirements
+## Usage
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Press `Ctrl+Shift+Alt+Z` to toggle Ultra Zen Mode.
+2. The extension will hide unnecessary UI elements and maximize the code view.
+3. Press `Ctrl+Shift+Alt+Z` again to revert to the normal view.
 
-## Extension Settings
+## Configuration
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+You can customize the behavior of Ultra Zen Mode by modifying the settings in your `settings.json` file.
 
-For example:
+```json
+{
+  "zenMode.fullScreen": true,
+  "zenMode.hideTabs": true,
+  "zenMode.hideStatusBar": true,
+  "zenMode.hideActivityBar": true,
+  "zenMode.centerLayout": false,
+  "window.zoomLevel": 0,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": false,
+  "editor.renderLineHighlight": "none",
+  "editor.wordWrap": "on",
+  "editor.scrollBeyondLastLine": false
+}
+```
 
-This extension contributes the following settings:
+## Development
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+### Prerequisites
 
-## Known Issues
+- [Node.js](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
+- [Yeoman](http://yeoman.io)
+- [VSCode Extension Generator](https://github.com/microsoft/vscode-generator-code)
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### Setup
 
-## Release Notes
+1. Clone the repository:
 
-Users appreciate release notes as you update your extension.
+```bash
+git clone https://github.com/jacksonkasi1/ultra-zen-mode.git
+cd ultra-zen-mode
+```
 
-### 1.0.0
+2. Install dependencies:
 
-Initial release of ...
+```bash
+pnpm install
+```
 
-### 1.0.1
+3. Open the project in VSCode:
 
-Fixed issue #.
+```bash
+code .
+```
 
-### 1.1.0
+4. Build the extension:
 
-Added features X, Y, and Z.
+```bash
+pnpm run compile
+```
 
----
+5. Test the extension:
 
-## Following extension guidelines
+Press `F5` to open a new VSCode window with your extension loaded.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+### Packaging
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+1. Clean up and package the extension:
 
-## Working with Markdown
+```bash
+vsce package
+```
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+2. Follow the instructions provided by the VSCode documentation to publish your extension.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## Donate
 
-## For more information
+If you like my work and would like to support me, please consider donating via [Ko-fi](https://ko-fi.com/jacksonkasi). Your support is greatly appreciated!😊
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+[![ko-fi](assets/SupportMe_red@2x.png)](https://ko-fi.com/jacksonkasi)
 
-**Enjoy!**
+## License
+
+MIT
