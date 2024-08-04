@@ -13,8 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     let toggleUltraZenMode = vscode.commands.registerCommand('ultraZenMode.toggle', () => {
         if (isUltraZenMode) {
             // Revert to normal mode
-            vscode.commands.executeCommand('workbench.action.toggleZenMode');
-            vscode.commands.executeCommand('workbench.action.toggleFullScreen');
+            revertUltraZenMode();
             isUltraZenMode = false;
         } else {
             // Activate Ultra Zen Mode
@@ -57,10 +56,30 @@ function applyUltraZenMode(config: vscode.WorkspaceConfiguration) {
     vscode.workspace.getConfiguration().update('zenMode.rightMargin', layoutMargin, vscode.ConfigurationTarget.Global);
 
     // Show or hide Git status
-    vscode.workspace.getConfiguration('git').update('enabled', config.get('showGitStatus'), vscode.ConfigurationTarget.Global);
+    vscode.commands.executeCommand('gitlens.toggleZenMode', config.get('showGitStatus'));
 
-    // Show or hide file path
-    vscode.workspace.getConfiguration('breadcrumbs').update('enabled', config.get('showFilePath'), vscode.ConfigurationTarget.Global);
+    // Show or hide file path (breadcrumbs)
+    vscode.workspace.getConfiguration('breadcrumbs').update('enabled', config.get('showBreadcrumbs'), vscode.ConfigurationTarget.Global);
+
+    // Show tabs
+    const showTabs = config.get('showTabs');
+    if (showTabs === 'multi') {
+        vscode.workspace.getConfiguration().update('workbench.editor.showTabs', true, vscode.ConfigurationTarget.Global);
+        vscode.workspace.getConfiguration().update('workbench.editor.enablePreview', false, vscode.ConfigurationTarget.Global);
+        vscode.workspace.getConfiguration().update('workbench.editor.enablePreviewFromQuickOpen', false, vscode.ConfigurationTarget.Global);
+    } else if (showTabs === 'single') {
+        vscode.workspace.getConfiguration().update('workbench.editor.showTabs', true, vscode.ConfigurationTarget.Global);
+        vscode.workspace.getConfiguration().update('workbench.editor.enablePreview', true, vscode.ConfigurationTarget.Global);
+        vscode.workspace.getConfiguration().update('workbench.editor.enablePreviewFromQuickOpen', true, vscode.ConfigurationTarget.Global);
+    } else {
+        vscode.workspace.getConfiguration().update('workbench.editor.showTabs', false, vscode.ConfigurationTarget.Global);
+    }
+}
+
+function revertUltraZenMode() {
+    vscode.commands.executeCommand('workbench.action.toggleZenMode');
+    vscode.commands.executeCommand('workbench.action.toggleFullScreen');
+    // Revert other settings if necessary
 }
 
 export function deactivate() {}

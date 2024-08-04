@@ -51,7 +51,7 @@
         "ultraZenMode.hideTabs": {
           "type": "boolean",
           "default": true,
-          "description": "Hide tabs"
+          "description": "Hide editor tabs"
         },
         "ultraZenMode.hideStatusBar": {
           "type": "boolean",
@@ -138,10 +138,20 @@
           "default": true,
           "description": "Show Git modification status"
         },
-        "ultraZenMode.showFilePath": {
+        "ultraZenMode.showBreadcrumbs": {
           "type": "boolean",
           "default": true,
-          "description": "Show file path at the top of the editor"
+          "description": "Show file path breadcrumbs"
+        },
+        "ultraZenMode.showTabs": {
+          "type": "string",
+          "enum": [
+            "multi",
+            "single",
+            "none"
+          ],
+          "default": "multi",
+          "description": "Show editor tabs (multi, single, none)"
         }
       }
     }
