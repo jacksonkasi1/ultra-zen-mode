@@ -101,7 +101,7 @@ vsce package
 
 If you like my work and would like to support me, please consider donating via [Ko-fi](https://ko-fi.com/jacksonkasi). Your support is greatly appreciated!😊
 
-[![ko-fi](assets/SupportMe_red@2x.png)](https://ko-fi.com/jacksonkasi)
+[![ko-fi](https://github.com/jacksonkasi1/ultra-zen-mode/raw/main/assets/SupportMe_red@2x.png)](https://ko-fi.com/jacksonkasi)
 
 ## License
 
