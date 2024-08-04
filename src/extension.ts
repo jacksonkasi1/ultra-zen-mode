@@ -3,23 +3,10 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
     let isUltraZenMode = false;
 
+    const config = vscode.workspace.getConfiguration('ultraZenMode');
+
     let viewUltraZenMode = vscode.commands.registerCommand('ultraZenMode.view', () => {
-        // Activate Ultra Zen Mode
-        vscode.commands.executeCommand('workbench.action.toggleZenMode');
-        vscode.commands.executeCommand('workbench.action.toggleFullScreen');
-        vscode.workspace.getConfiguration().update('zenMode.hideTabs', true, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('zenMode.hideStatusBar', true, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('zenMode.hideActivityBar', true, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('zenMode.centerLayout', false, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('window.zoomLevel', 0, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('editor.minimap.enabled', false, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('workbench.editor.enablePreview', false, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('workbench.editor.tabCloseButton', 'off', vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('workbench.activityBar.visible', false, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('workbench.statusBar.visible', false, vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('editor.renderLineHighlight', 'none', vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('editor.wordWrap', 'on', vscode.ConfigurationTarget.Global);
-        vscode.workspace.getConfiguration().update('editor.scrollBeyondLastLine', false, vscode.ConfigurationTarget.Global);
+        applyUltraZenMode(config);
         isUltraZenMode = true;
     });
 
@@ -31,27 +18,38 @@ export function activate(context: vscode.ExtensionContext) {
             isUltraZenMode = false;
         } else {
             // Activate Ultra Zen Mode
-            vscode.commands.executeCommand('workbench.action.toggleZenMode');
-            vscode.commands.executeCommand('workbench.action.toggleFullScreen');
-            vscode.workspace.getConfiguration().update('zenMode.hideTabs', true, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('zenMode.hideStatusBar', true, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('zenMode.hideActivityBar', true, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('zenMode.centerLayout', false, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('window.zoomLevel', 0, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('editor.minimap.enabled', false, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('workbench.editor.enablePreview', false, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('workbench.editor.tabCloseButton', 'off', vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('workbench.activityBar.visible', false, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('workbench.statusBar.visible', false, vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('editor.renderLineHighlight', 'none', vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('editor.wordWrap', 'on', vscode.ConfigurationTarget.Global);
-            vscode.workspace.getConfiguration().update('editor.scrollBeyondLastLine', false, vscode.ConfigurationTarget.Global);
+            applyUltraZenMode(config);
             isUltraZenMode = true;
         }
     });
 
+    let configureUltraZenMode = vscode.commands.registerCommand('ultraZenMode.configure', () => {
+        vscode.commands.executeCommand('workbench.action.openSettings', 'Ultra Zen Mode');
+    });
+
     context.subscriptions.push(viewUltraZenMode);
     context.subscriptions.push(toggleUltraZenMode);
+    context.subscriptions.push(configureUltraZenMode);
+}
+
+function applyUltraZenMode(config: vscode.WorkspaceConfiguration) {
+    if (config.get('fullScreen')) {
+        vscode.commands.executeCommand('workbench.action.toggleFullScreen');
+    }
+    vscode.commands.executeCommand('workbench.action.toggleZenMode');
+    vscode.workspace.getConfiguration().update('zenMode.hideTabs', config.get('hideTabs'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('zenMode.hideStatusBar', config.get('hideStatusBar'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('zenMode.hideActivityBar', config.get('hideActivityBar'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('zenMode.centerLayout', config.get('centerLayout'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('window.zoomLevel', config.get('zoomLevel'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('editor.minimap.enabled', config.get('minimapEnabled'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('workbench.editor.enablePreview', config.get('enablePreview'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('workbench.editor.tabCloseButton', config.get('tabCloseButton'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('workbench.activityBar.visible', config.get('activityBarVisible'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('workbench.statusBar.visible', config.get('statusBarVisible'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('editor.renderLineHighlight', config.get('renderLineHighlight'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('editor.wordWrap', config.get('wordWrap'), vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('editor.scrollBeyondLastLine', config.get('scrollBeyondLastLine'), vscode.ConfigurationTarget.Global);
 }
 
 export function deactivate() {}

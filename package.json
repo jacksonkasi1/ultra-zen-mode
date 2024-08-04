@@ -26,6 +26,10 @@
       {
         "command": "ultraZenMode.toggle",
         "title": "Toggle Ultra Zen Mode"
+      },
+      {
+        "command": "ultraZenMode.configure",
+        "title": "Configure Ultra Zen Mode"
       }
     ],
     "keybindings": [
@@ -34,7 +38,98 @@
         "key": "ctrl+shift+alt+z",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Ultra Zen Mode",
+      "properties": {
+        "ultraZenMode.fullScreen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable full screen mode"
+        },
+        "ultraZenMode.hideTabs": {
+          "type": "boolean",
+          "default": true,
+          "description": "Hide tabs"
+        },
+        "ultraZenMode.hideStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Hide status bar"
+        },
+        "ultraZenMode.hideActivityBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Hide activity bar"
+        },
+        "ultraZenMode.centerLayout": {
+          "type": "boolean",
+          "default": false,
+          "description": "Center layout"
+        },
+        "ultraZenMode.zoomLevel": {
+          "type": "number",
+          "default": 0,
+          "description": "Zoom level"
+        },
+        "ultraZenMode.minimapEnabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable minimap"
+        },
+        "ultraZenMode.enablePreview": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable preview"
+        },
+        "ultraZenMode.tabCloseButton": {
+          "type": "string",
+          "enum": [
+            "off",
+            "left",
+            "right"
+          ],
+          "default": "off",
+          "description": "Tab close button position"
+        },
+        "ultraZenMode.activityBarVisible": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show activity bar"
+        },
+        "ultraZenMode.statusBarVisible": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show status bar"
+        },
+        "ultraZenMode.renderLineHighlight": {
+          "type": "string",
+          "enum": [
+            "none",
+            "gutter",
+            "line",
+            "all"
+          ],
+          "default": "none",
+          "description": "Render line highlight"
+        },
+        "ultraZenMode.wordWrap": {
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ],
+          "default": "on",
+          "description": "Enable word wrap"
+        },
+        "ultraZenMode.scrollBeyondLastLine": {
+          "type": "boolean",
+          "default": false,
+          "description": "Scroll beyond last line"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
