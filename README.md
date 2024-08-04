@@ -1,6 +1,6 @@
 # Ultra Zen Mode
 
-![Ultra Zen Mode Logo](assets/logo.png)
+![Ultra Zen Mode Logo](https://github.com/jacksonkasi1/ultra-zen-mode/raw/main/assets/logo.png)
 
 A custom Ultra Zen Mode for maximizing the code view in Visual Studio Code. This extension provides a distraction-free coding environment by toggling various UI elements.
 
@@ -54,7 +54,7 @@ You can customize the behavior of Ultra Zen Mode by modifying the settings in yo
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/)
-- [pnpm](https://pnpm.io/)
+- [npm](https://www.npmjs.com)
 - [Yeoman](http://yeoman.io)
 - [VSCode Extension Generator](https://github.com/microsoft/vscode-generator-code)
 
@@ -70,7 +70,7 @@ cd ultra-zen-mode
 2. Install dependencies:
 
 ```bash
-pnpm install
+npm install
 ```
 
 3. Open the project in VSCode:
@@ -82,7 +82,7 @@ code .
 4. Build the extension:
 
 ```bash
-pnpm run compile
+npm run compile
 ```
 
 5. Test the extension:
