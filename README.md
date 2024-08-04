@@ -1,5 +1,7 @@
 # Ultra Zen Mode
 
+![Ultra Zen Mode Logo](assets/logo.png)
+
 A custom Ultra Zen Mode for maximizing the code view in Visual Studio Code. This extension provides a distraction-free coding environment by toggling various UI elements.
 
 ## Features
