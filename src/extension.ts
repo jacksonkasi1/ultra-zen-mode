@@ -50,6 +50,17 @@ function applyUltraZenMode(config: vscode.WorkspaceConfiguration) {
     vscode.workspace.getConfiguration().update('editor.renderLineHighlight', config.get('renderLineHighlight'), vscode.ConfigurationTarget.Global);
     vscode.workspace.getConfiguration().update('editor.wordWrap', config.get('wordWrap'), vscode.ConfigurationTarget.Global);
     vscode.workspace.getConfiguration().update('editor.scrollBeyondLastLine', config.get('scrollBeyondLastLine'), vscode.ConfigurationTarget.Global);
+
+    // Apply center layout margin
+    const layoutMargin = config.get('layoutMargin');
+    vscode.workspace.getConfiguration().update('zenMode.leftMargin', layoutMargin, vscode.ConfigurationTarget.Global);
+    vscode.workspace.getConfiguration().update('zenMode.rightMargin', layoutMargin, vscode.ConfigurationTarget.Global);
+
+    // Show or hide Git status
+    vscode.workspace.getConfiguration('git').update('enabled', config.get('showGitStatus'), vscode.ConfigurationTarget.Global);
+
+    // Show or hide file path
+    vscode.workspace.getConfiguration('breadcrumbs').update('enabled', config.get('showFilePath'), vscode.ConfigurationTarget.Global);
 }
 
 export function deactivate() {}

@@ -25,6 +25,7 @@ Alternatively, you can install the extension from the VSCode marketplace.
 1. Press `Ctrl+Shift+Alt+Z` to toggle Ultra Zen Mode.
 2. The extension will hide unnecessary UI elements and maximize the code view.
 3. Press `Ctrl+Shift+Alt+Z` again to revert to the normal view.
+4. To configure Ultra Zen Mode, open the Command Palette (`Ctrl+Shift+P`), type `Configure Ultra Zen Mode`, and select it. This will open the settings page where you can enable or disable various views.
 
 ## Configuration
 
@@ -45,7 +46,10 @@ You can customize the behavior of Ultra Zen Mode by modifying the settings in yo
   "workbench.statusBar.visible": false,
   "editor.renderLineHighlight": "none",
   "editor.wordWrap": "on",
-  "editor.scrollBeyondLastLine": false
+  "editor.scrollBeyondLastLine": false,
+  "ultraZenMode.layoutMargin": 10,
+  "ultraZenMode.showGitStatus": true,
+  "ultraZenMode.showFilePath": true
 }
 ```
 

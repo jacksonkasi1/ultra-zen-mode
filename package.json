@@ -68,6 +68,11 @@
           "default": false,
           "description": "Center layout"
         },
+        "ultraZenMode.layoutMargin": {
+          "type": "number",
+          "default": 10,
+          "description": "Margin for centered layout (left and right space)"
+        },
         "ultraZenMode.zoomLevel": {
           "type": "number",
           "default": 0,
@@ -127,6 +132,16 @@
           "type": "boolean",
           "default": false,
           "description": "Scroll beyond last line"
+        },
+        "ultraZenMode.showGitStatus": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Git modification status"
+        },
+        "ultraZenMode.showFilePath": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show file path at the top of the editor"
         }
       }
     }
