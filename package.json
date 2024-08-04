@@ -20,6 +20,10 @@
   "contributes": {
     "commands": [
       {
+        "command": "ultraZenMode.view",
+        "title": "View: Ultra Zen Mode"
+      },
+      {
         "command": "ultraZenMode.toggle",
         "title": "Toggle Ultra Zen Mode"
       }
