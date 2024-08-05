@@ -30,6 +30,10 @@
       {
         "command": "ultraZenMode.configure",
         "title": "Configure Ultra Zen Mode"
+      },
+      {
+        "command": "ultraZenMode.default",
+        "title": "Default Appearance"
       }
     ],
     "keybindings": [
