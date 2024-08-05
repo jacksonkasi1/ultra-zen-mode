@@ -2,7 +2,7 @@
   "name": "ultra-zen-mode",
   "displayName": "Ultra Zen Mode",
   "description": "A custom Ultra Zen Mode for maximizing the code view in VSCode.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "jacksonkasi",
   "engines": {
     "vscode": "^1.92.0"
@@ -34,6 +34,10 @@
       {
         "command": "ultraZenMode.default",
         "title": "Default Appearance"
+      },
+      {
+        "command": "ultraZenMode.resetZenMode",
+        "title": "Reset Zen Mode"
       }
     ],
     "keybindings": [

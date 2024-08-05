@@ -40,10 +40,16 @@ export function activate(context: vscode.ExtensionContext) {
     resetToDefaultAppearance();
   });
 
+  let resetDefaultZenMode = vscode.commands.registerCommand('ultraZenMode.resetZenMode', () => {
+    revertUltraZenMode();
+    applyUltraZenMode(config);
+  });
+
   context.subscriptions.push(viewUltraZenMode);
   context.subscriptions.push(toggleUltraZenMode);
   context.subscriptions.push(configureUltraZenMode);
   context.subscriptions.push(defaultAppearance);
+  context.subscriptions.push(resetDefaultZenMode);
 
   vscode.workspace.onDidChangeConfiguration((e) => {
     if (e.affectsConfiguration("ultraZenMode")) {
@@ -237,7 +243,6 @@ function applyUltraZenMode(config: vscode.WorkspaceConfiguration) {
 
 function revertUltraZenMode() {
   vscode.commands.executeCommand("workbench.action.toggleZenMode");
-  vscode.commands.executeCommand("workbench.action.toggleFullScreen");
   const originalConfig = getOriginalConfig();
   Object.keys(originalConfig).forEach((key) => {
     vscode.workspace
